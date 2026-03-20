@@ -30,6 +30,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import {
   LoaderKitView,
 } from 'react-native-loader-kit';
+import LottieView from 'lottie-react-native';
 const HomeScreen = () => {
   const insets = useSafeAreaInsets();
   const [showSearch, toggleSearch] = useState(false);
@@ -354,10 +355,12 @@ const HomeScreen = () => {
                   </TouchableOpacity>
                   {/* Weather Image  */}
                   <View style={styles.weatherImageView}>
-                    <Image
+                    <LottieView
                       source={getWeatherImage(current?.condition?.text)}
                       style={styles.weatherImageStyle}
-                      resizeMode='contain'
+                      loop
+                      autoPlay
+                      speed={0.7}
                     />
                   </View>
                   {/* Celcius  */}
@@ -452,12 +455,15 @@ const HomeScreen = () => {
                       dayName = dayName.split(',')[0];
                       return (
                         <View key={index} style={styles.scrollInsideView}>
-                          <Image
+                          <LottieView
                             source={getWeatherImage(item?.day?.condition?.text)}
                             style={{
                               width: SIZE.wp(15),
                               height: SIZE.hp(7),
                             }}
+                            loop
+                            autoPlay
+                            speed={0.7}
                           />
                           <Text style={styles.dayText}>{dayName}</Text>
                           <Text style={styles.dayText}>
@@ -658,8 +664,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   weatherImageStyle: {
-    width: SIZE.wp(20),
-    height: SIZE.hp(9),
+    width: SIZE.wp(25),
+    height: SIZE.hp(10),
   },
   celciusView: {
     paddingVertical: SPACING[10],
